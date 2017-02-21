@@ -1,10 +1,12 @@
 package com.lin.app.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.lin.app.R;
+import com.lin.framework.activity.BaseReactActivity;
 import com.lin.framework.reactnative.ReactNativeUtil;
 
 public class SplashActivity extends Activity {
@@ -17,8 +19,9 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
         if (!ReactNativeUtil.isSupport()) {
             ReactNativeUtil.notSupportWarning(this);
-            return;
+           return;
         }
+        startActivity(new Intent(SplashActivity.this,BaseReactActivity.class));
 
     }
 }
