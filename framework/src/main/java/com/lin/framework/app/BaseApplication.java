@@ -1,49 +1,41 @@
 package com.lin.framework.app;
 
 import android.app.Application;
+import android.content.Context;
 
-import com.facebook.react.ReactApplication;
-import com.facebook.react.ReactNativeHost;
-import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
-import com.facebook.soloader.SoLoader;
+import com.lin.framework.InitManager;
+import com.lin.framework.base.AppLifecycleCallback;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 
 /**
  * Created by linweilin on 2017/2/20.
  */
 
-public class BaseApplication extends Application implements ReactApplication{
+public class BaseApplication extends Application implements InitManager.InitDelegate{
 
-    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-        @Override
-        public boolean getUseDeveloperSupport() {
-            return true;
-        }
-
-        @Override
-        protected List<ReactPackage> getPackages() {
-            return Arrays.<ReactPackage>asList(
-                    new MainReactPackage()
-            );
-        }
-
-        @Override
-        protected String getJSMainModuleName() {
-            return "index";
-        }
-    };
 
     @Override
-    public ReactNativeHost getReactNativeHost() {
-        return mReactNativeHost;
+    public void initReactNative() {
+
+    }
+
+
+    public static InitManager.InitDelegate initDelegate(Context context){
+        Application app = (Application) context.getApplicationContext();
+        return (app instanceof InitManager.InitDelegate)?(InitManager.InitDelegate)app:null;
+    }
+
+    @Override
+    public Map<String, String> getKeys() {
+        return null;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        SoLoader.init(this, /* native exopackage */ false);
+        InitManager.initInApplication(this,this);
+        this.registerActivityLifecycleCallbacks(new AppLifecycleCallback());
+
     }
 }
