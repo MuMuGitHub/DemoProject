@@ -1,4 +1,4 @@
-package com.lin.app.bean;
+package com.lin.percentcenter.bean;
 
 /**
  * Created by linweilin on 2016/11/7.
@@ -7,16 +7,9 @@ package com.lin.app.bean;
 public class UserInfo {
 
     private String name;
-    private int id;
+    private String id;
     private String sex;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getSex() {
         return sex;
@@ -24,6 +17,14 @@ public class UserInfo {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

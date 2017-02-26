@@ -21,7 +21,7 @@ public class SplashActivity extends Activity {
             ReactNativeUtil.notSupportWarning(this);
            return;
         }
-        startActivity(new Intent(SplashActivity.this,BaseReactActivity.class));
+//        startActivity(new Intent(SplashActivity.this,BaseReactActivity.class));
 
     }
 }

@@ -1,9 +1,12 @@
 package com.lin.framework.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import com.lin.common.baseapp.ActivityStackManager;
+import com.lin.common.net.RequestCallback;
 
 public abstract class BaseActivity extends Activity {
 
@@ -15,6 +18,22 @@ public abstract class BaseActivity extends Activity {
         initVariables();
         initViews(savedInstanceState);
         loadData();
+    }
+
+    protected boolean needCallback;
+
+    protected ProgressDialog dlg;
+
+    public abstract class AbstractRequestCallback implements RequestCallback {
+        public abstract void onSuccess(String content);
+
+        @Override
+        public void onFail(String errorMessage) {
+            dlg.dismiss();
+            new AlertDialog.Builder(BaseActivity.this).setTitle("error")
+                    .setMessage(errorMessage).setPositiveButton("确定", null)
+                    .show();
+        }
     }
     //获取布局id
     protected abstract int getContentViewId();

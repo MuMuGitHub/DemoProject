@@ -1,1 +1,1 @@
-include ':app', ':common', ':login', ':framework', ':demo'
+include ':app', ':common', ':login', ':framework', ':demo', ':percentcenter'
