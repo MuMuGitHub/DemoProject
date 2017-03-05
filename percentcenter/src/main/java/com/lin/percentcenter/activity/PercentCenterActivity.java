@@ -41,15 +41,10 @@ public class PercentCenterActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.button:
-                presenter.saveUser(getID(),getSex(),getName());
-                break;
-            case R.id.button2:
-                presenter.loadUser(getID());
-                break;
-            default:
-                break;
+        if (view.getId() == R.id.button){
+            presenter.saveUser(getID(),getSex(),getName());
+        }else {
+            presenter.loadUser(getID());
         }
     }
 

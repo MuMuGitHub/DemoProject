@@ -10,16 +10,23 @@ public class UserModel implements IUserModel {
     private UserInfo userInfo;
     @Override
     public void setID(String id) {
+        if (userInfo == null)
+            userInfo = new UserInfo();
         userInfo.setId(id);
     }
 
     @Override
     public void setName(String name) {
+        if (userInfo == null)
+            userInfo = new UserInfo();
         userInfo.setName(name);
     }
 
     @Override
     public void setSex(String sex) {
+
+        if (userInfo == null)
+            userInfo = new UserInfo();
         userInfo.setSex(sex);
     }
 
@@ -28,6 +35,6 @@ public class UserModel implements IUserModel {
         if (userInfo.getId().equals(id)){
             return userInfo;
         }
-        return null;
+        return new UserInfo();
     }
 }

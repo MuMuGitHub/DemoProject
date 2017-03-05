@@ -5,7 +5,7 @@
 
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="percenter"
         tools:replace="android:icon, android:label"
         >
         <activity android:name="com.lin.percentcenter.activity.PercentCenterActivity"/>
