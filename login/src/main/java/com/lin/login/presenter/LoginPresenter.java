@@ -12,13 +12,15 @@ import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
  * Created by linweilin on 2017/3/2.
  */
 
-public class LoginPresenter {
+public class LoginPresenter implements ILoginPresenter{
     private ILoginView mILoginView = null;
 
     private Subscriber<Object> subscriber = null;
@@ -94,19 +96,19 @@ public class LoginPresenter {
 
         };
         //被观察者 创建方式1
-        Observable.create(new Observable.OnSubscribe<Object>(){
-            @Override
-            public void call(Subscriber<? super Object> subscriber) {
-                Drawable drawable = mContext.getResources().getDrawable(R.mipmap.mac);
-                subscriber.onNext(drawable);
-//                subscriber.onNext("good");
-//                LoginInfo loginInfo = new LoginInfo();
-//                loginInfo.setSessionId("123");
-//                subscriber.onNext(loginInfo);
-                subscriber.onCompleted();
-            }
-        }).observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io()).subscribe(subscriber);
+//        Observable.create(new Observable.OnSubscribe<Object>(){
+//            @Override
+//            public void call(Subscriber<? super Object> subscriber) {
+//                Drawable drawable = mContext.getResources().getDrawable(R.mipmap.mac);
+//                subscriber.onNext(drawable);
+////                subscriber.onNext("good");
+////                LoginInfo loginInfo = new LoginInfo();
+////                loginInfo.setSessionId("123");
+////                subscriber.onNext(loginInfo);
+//                subscriber.onCompleted();
+//            }
+//        }).observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.io()).subscribe(subscriber);
         //被观察者创建方式2
 //        observable = Observable.just("good good","study");
         //被观察者创建方式3
@@ -152,8 +154,31 @@ public class LoginPresenter {
 // 自动创建 Subscriber ，并使用 onNextAction、 onErrorAction 和 onCompletedAction 来定义 onNext()、 onError() 和 onCompleted()
 //        observable.subscribe(onNextAction, onErrorAction, onCompletedAction);
 
+//        Observable.just("path").map(new Func1<String, Bitmap>() {
+//
+//            @Override
+//            public Bitmap call(String s) {
+//                return null;
+//            }
+//        }).subscribe(new Action1<Bitmap>() {
+//            @Override
+//            public void call(Bitmap bitmap) {
+//
+//            }
+//        });
 
 
+        Observable.just(R.mipmap.mac).map(new Func1<Integer, Drawable>() {
+            @Override
+            public Drawable call(Integer integer) {
+                return mContext.getResources().getDrawable(integer);
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Drawable>() {
+            @Override
+            public void call(Drawable drawable) {
+                mILoginView.setImg(drawable);
+            }
+        });
     }
 
     public void onrecycle(){

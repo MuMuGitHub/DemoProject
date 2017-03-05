@@ -51,7 +51,7 @@ public class InitManager {
             return;
         }
         if(!isInit ) {
-            initInMainThread(application,delegate);
+//            initInMainThread(application,delegate);
             InitManager.isInit = true;
         }
     }

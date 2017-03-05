@@ -14,4 +14,8 @@ public class LoginInfo {
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
+
+    public LoginInfo(String sessionId) {
+        this.sessionId = sessionId;
+    }
 }

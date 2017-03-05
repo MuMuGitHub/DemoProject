@@ -8,14 +8,15 @@ import android.widget.Button;
 
 import com.lin.framework.activity.BaseActivity;
 import com.lin.login.R;
-import com.lin.login.presenter.LoginPresenter;
+import com.lin.login.presenter.ILoginPresenter;
+import com.lin.login.presenter.TestPresenter;
 import com.lin.login.view.ILoginView;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener,ILoginView{
 
 
     Button button = null;
-    LoginPresenter loginPresenter = null;
+    ILoginPresenter loginPresenter = null;
 
     @Override
     protected int getContentViewId() {
@@ -25,7 +26,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     protected void initVariables() {
 
-            }
+    }
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void loadData() {
-        loginPresenter = new LoginPresenter(this,this);
+        loginPresenter = new TestPresenter(this,this);
     }
 
     @Override
