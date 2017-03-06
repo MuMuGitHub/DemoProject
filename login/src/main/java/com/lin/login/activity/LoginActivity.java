@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.lin.framework.activity.BaseActivity;
 import com.lin.login.R;
 import com.lin.login.presenter.ILoginPresenter;
-import com.lin.login.presenter.TestPresenter;
+import com.lin.login.presenter.OkHttpTestPresenter;
 import com.lin.login.view.ILoginView;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener,ILoginView{
@@ -36,7 +36,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void loadData() {
-        loginPresenter = new TestPresenter(this,this);
+        loginPresenter = new OkHttpTestPresenter(this,this);
     }
 
     @Override
@@ -58,6 +58,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void setImg(Drawable drawable) {
+
+     if (drawable == null){
+         Log.e("linwl","drawabledrawable");
+
+     }
         findViewById(R.id.iv_img).setBackground(drawable);
     }
 

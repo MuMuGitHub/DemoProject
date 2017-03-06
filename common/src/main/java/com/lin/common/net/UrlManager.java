@@ -10,5 +10,4 @@ public class UrlManager {
 
     private static List<URLData> urlDataList = null;
 
-
 }

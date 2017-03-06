@@ -2,6 +2,8 @@ package com.lin.common.net;
 
 import android.content.Context;
 
+import com.lin.common.baseapp.AppUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,12 @@ import java.util.List;
  */
 
 public class RequestManager {
+    private static RequestManager requestManager = new RequestManager(AppUtils.getInstance().getContext());
     ArrayList<HttpRequest> requestList = null;
+
+    public static RequestManager getInstance(){
+        return requestManager;
+    }
 
     public RequestManager(final Context context) {
         requestList = new ArrayList<>();

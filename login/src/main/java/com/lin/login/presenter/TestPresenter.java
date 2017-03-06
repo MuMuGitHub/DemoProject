@@ -3,6 +3,7 @@ package com.lin.login.presenter;
 import android.content.Context;
 import android.util.Log;
 
+import com.lin.framework.bean.UserInfo;
 import com.lin.login.bean.LoginInfo;
 import com.lin.login.view.ILoginView;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
+import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func1;
 
@@ -52,6 +54,28 @@ public class TestPresenter implements ILoginPresenter {
             @Override
             public void call(String o) {
                 Log.e("linwl",o);
+            }
+        });
+
+        Observable.from(infos).flatMap(new Func1<LoginInfo, Observable<UserInfo>>() {
+            @Override
+            public Observable<UserInfo> call(LoginInfo loginInfo) {
+                return Observable.from(loginInfo.getUserInfos());
+            }
+        }).subscribe(new Subscriber<UserInfo>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(UserInfo userInfo) {
+                Log.e("linwl","user name " + userInfo.getUserName());
             }
         });
     }
