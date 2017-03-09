@@ -18,7 +18,9 @@
         android:text="ddddadjaf"
         android:id="@+id/bt_setimg"
         />
-
+    <com.lin.login.view.CircleView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <ImageView
         android:id="@+id/iv_img"
         android:layout_width="wrap_content"

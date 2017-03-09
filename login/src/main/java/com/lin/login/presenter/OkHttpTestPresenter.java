@@ -2,12 +2,21 @@ package com.lin.login.presenter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.hardware.fingerprint.FingerprintManager;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.lin.common.net.UrlFactory;
+import com.lin.login.R;
 import com.lin.login.view.ILoginView;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by linweilin on 2017/3/6.
@@ -43,49 +52,39 @@ public class OkHttpTestPresenter implements ILoginPresenter {
 //
 //            }
 //        });
-        //创建okHttpClient对象
-//        OkHttpClient mOkHttpClient = new OkHttpClient();
-//        //创建一个Request
-//        final Request request = new Request.Builder()
-//                .url(UrlFactory.getWxUrl())
-//                .build();
-//        //new call
-//        Call call = mOkHttpClient.newCall(request);
-//        //请求加入调度
-//        call.enqueue(new Callback() {
-//
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                Log.e("linwl","onFailure");
-//
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                Log.e("linwl","onResponse" + response.message() + response.body().string());
-//                Message m = new Message();
-//                m.what = 1;
-//                Drawable d = mContext.getResources().getDrawable(R.mipmap.mac);
-////                Bitmap b = new B
-//                m.obj = d;
-//                handler.sendMessage(m);
-//            }
-//        });
+       // 创建okHttpClient对象
+        OkHttpClient mOkHttpClient = new OkHttpClient();
+        //创建一个Request
+        final Request request = new Request.Builder()
+                .url(UrlFactory.getWxUrl())
+                .build();
+        //new call
+        Call call = mOkHttpClient.newCall(request);
+        //请求加入调度
+        call.enqueue(new Callback() {
 
-        getFingerprintManager(mContext).authenticate(null, null, 0, null, null);
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("linwl","onFailure");
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.e("linwl","onResponse" + response.message() + response.body().string());
+                Message m = new Message();
+                m.what = 1;
+                Drawable d = mContext.getResources().getDrawable(R.mipmap.mac);
+//                Bitmap b = new B
+                m.obj = d;
+                handler.sendMessage(m);
+            }
+        });
+
 
 
     }
 
-    public static FingerprintManager getFingerprintManager(Context context) {
-        FingerprintManager fingerprintManager = null;
-        try {
-            fingerprintManager = (FingerprintManager) context.getSystemService(Context.FINGERPRINT_SERVICE);
-        } catch (Throwable e) {
-            Log.e("linwl","have not class FingerprintManager");
-        }
-        return fingerprintManager;
-    }
 
     @Override
     public void onrecycle() {
