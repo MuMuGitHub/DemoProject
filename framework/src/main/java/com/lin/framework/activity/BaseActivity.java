@@ -14,7 +14,9 @@ public abstract class BaseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityStackManager.getInstance().addActivity(this);
-        setContentView(getContentViewId());
+        if (getContentViewId() != 0){
+            setContentView(getContentViewId());
+        }
         initVariables();
         initViews(savedInstanceState);
         loadData();
