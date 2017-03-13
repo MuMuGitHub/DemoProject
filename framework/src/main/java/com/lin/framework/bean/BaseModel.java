@@ -24,4 +24,13 @@ public class BaseModel {
     public void setError_code(String error_code) {
         this.error_code = error_code;
     }
+
+
+    @Override
+    public String toString() {
+        return "BaseModel{" +
+                "reason='" + reason + '\'' +
+                ", error_code='" + error_code + '\'' +
+                '}';
+    }
 }

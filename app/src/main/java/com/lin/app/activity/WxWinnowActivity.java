@@ -4,16 +4,24 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
 import com.lin.app.R;
 import com.lin.app.WXBinding;
+import com.lin.app.adapter.WxAdapter;
+import com.lin.app.bean.WxItemModel;
 import com.lin.app.bean.WxModel;
 import com.lin.common.net.UrlFactory;
+import com.lin.common.view.DividerItemDecoration;
 import com.lin.framework.activity.BaseActivity;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -33,18 +41,33 @@ public class WxWinnowActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            if (msg.what == 1){
+                mWxAdapter = new WxAdapter((List<WxItemModel>)msg.obj);
+                mRecyclerView.setAdapter(mWxAdapter);
+            }
         }
     };
+    private RecyclerView mRecyclerView = null;
+    private WxAdapter mWxAdapter;
 
     @Override
     protected int getContentViewId() {
-        return 0;
+        return R.layout.activity_wxwinnow;
     }
 
     @Override
     protected void initVariables() {
-        WXBinding wxBinding = DataBindingUtil.setContentView(this, R.layout.activity_wxwinnow);
-//        wxBinding.set(x);
+    }
+
+    @Override
+    protected void initViews(Bundle savedInstanceState) {
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_wx);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));
+    }
+
+    @Override
+    protected void loadData() {
         OkHttpClient okHttpClient = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
                 .add("size","10")
@@ -64,24 +87,24 @@ public class WxWinnowActivity extends BaseActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String str = response.body().string();
-                Log.e("linwl","success : " + str);
-                WxModel wxModel = (WxModel) JSON.parse(str);
+                Log.e("linwl", "success : " + str);
+                WxModel wxModel = new Gson().fromJson(str, WxModel.class);
+                Log.e("linwl", "wxmodel................." +
+                        "" +
+                        "");
+                Log.e("linwl", "wxmodel" + wxModel.toString());
+                Log.e("linwl", "wxmodel" + wxModel.getResult());
+                Log.e("linwl", "wxmodel" + wxModel.getError_code());
+                Log.e("linwl", "wxmodel" + wxModel.getReason());
+                Log.e("linwl", "wxmodel" + wxModel.getResult().getTotalPage());
+                Log.e("linwl", "wxmodel" + wxModel.getResult().getList().get(1).getFirstImg());
+
+
                 Message message = new Message();
                 message.what = 1;
-//                message.obj = wxModel;
+                message.obj = wxModel.getResult().getList();
                 handler.sendMessage(message);
-
             }
         });
-    }
-
-    @Override
-    protected void initViews(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    protected void loadData() {
-
     }
 }

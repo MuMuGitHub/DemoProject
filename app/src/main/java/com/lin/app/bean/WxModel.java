@@ -56,5 +56,23 @@ public class WxModel extends BaseModel {
         public void setList(List<WxItemModel> list) {
             this.list = list;
         }
+
+        @Override
+        public String toString() {
+            return "Result{" +
+                    "totalPage=" + totalPage +
+                    ", ps=" + ps +
+                    ", pno=" + pno +
+                    ", list=" + list +
+                    '}';
+        }
+    }
+
+
+    @Override
+    public String toString() {
+        return "WxModel{" +
+                "result=" + result +
+                '}';
     }
 }

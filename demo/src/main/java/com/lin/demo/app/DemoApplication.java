@@ -7,4 +7,6 @@ import com.lin.app.app.HomeApplication;
  */
 
 public class DemoApplication extends HomeApplication {
+
+
 }

@@ -7,11 +7,12 @@
             type="com.lin.app.bean.WxModel" />
     </data>
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_wx"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    </LinearLayout>
+    </android.support.v7.widget.RecyclerView>
 
 </layout>
