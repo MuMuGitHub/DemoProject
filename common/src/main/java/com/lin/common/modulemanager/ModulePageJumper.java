@@ -21,5 +21,4 @@ public interface ModulePageJumper {
      */
     boolean startModulePage(Context context, String moduleId, String pageId, Bundle params, String callBackId);
 
-
 }
