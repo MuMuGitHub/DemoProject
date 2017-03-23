@@ -4,7 +4,7 @@
   "description": "demo project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "author": "mumu",
@@ -12,5 +12,8 @@
   "dependencies": {
     "react": "^15.4.2",
     "react-native": "^0.41.2"
+  },
+  "devDependencies": {
+    "invariant": "^2.2.2"
   }
 }

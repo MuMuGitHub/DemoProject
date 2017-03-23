@@ -73,7 +73,7 @@ public class InitManager {
      */
     private static void initInMainThread(Application application, InitDelegate delegate) {
         delegate.initReactNative();                 //模块注册需放主线程(否则会报warning)
-        ReactNativeUtil.getInstance().init(application);
+//        ReactNativeUtil.getInstance().init(application);
     }
 
     private static void initImageLoader(){

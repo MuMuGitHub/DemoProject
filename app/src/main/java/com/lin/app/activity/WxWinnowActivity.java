@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.lin.app.R;
 import com.lin.app.WXBinding;
 import com.lin.app.adapter.WxAdapter;
+import com.lin.app.bean.IWxItem;
 import com.lin.app.bean.WxItemModel;
 import com.lin.app.bean.WxModel;
 import com.lin.common.net.UrlFactory;
@@ -30,6 +31,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by linweilin on 2017/3/10.
@@ -106,5 +109,25 @@ public class WxWinnowActivity extends BaseActivity {
                 handler.sendMessage(message);
             }
         });
+
+//        Retrofit retrofit = new Retrofit.Builder()
+//
+//                .baseUrl(UrlFactory.getWxUrl())
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//        IWxItem wxItem = retrofit.create(IWxItem.class);
+//        retrofit2.Call<List<WxItemModel>> call1 = wxItem.getItems();
+//        call1.enqueue(new retrofit2.Callback<List<WxItemModel>>() {
+//            @Override
+//            public void onResponse(retrofit2.Call<List<WxItemModel>> call, retrofit2.Response<List<WxItemModel>> response) {
+//                Log.e("linwl",response.body().toString());
+//            }
+//
+//            @Override
+//            public void onFailure(retrofit2.Call<List<WxItemModel>> call, Throwable t) {
+//
+//            }
+//        });
+
     }
 }

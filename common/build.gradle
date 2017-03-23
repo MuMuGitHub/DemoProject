@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'android-apt'
 android {
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
@@ -37,5 +38,16 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:+'
     compile 'com.squareup.okio:okio:+'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
-
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.google.dagger:dagger:2.0'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.0'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'//Retrofit2所需要的包
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'//ConverterFactory的Gson依赖包
+    compile 'com.squareup.retrofit2:converter-scalars:2.2.0'//ConverterFactory的String依赖包
+}
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xmaxerrs" << "500" // or whatever number you want
+    }
 }

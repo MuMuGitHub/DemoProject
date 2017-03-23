@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.lin.framework.activity.BaseActivity;
 import com.lin.login.R;
@@ -25,11 +26,14 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListe
 
 import java.util.ArrayList;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener,ILoginView{
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
+public class LoginActivity extends BaseActivity implements View.OnClickListener, ILoginView {
 
-    Button button = null;
+    Button button;
     ILoginPresenter loginPresenter = null;
+
 
     @Override
     protected int getContentViewId() {
@@ -38,17 +42,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void initVariables() {
-        final ArrayList<String> a = new ArrayList<>();
-
-
     }
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        button = (Button) findViewById(R.id.bt_setimg);
+        ButterKnife.bind(this);
         button.setOnClickListener(this);
         String imageUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489321408195&di=5db2207174a917c50d768f4e3dd292c9&imgtype=0&src=http%3A%2F%2Fh.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Ff703738da97739121c70e72dfa198618367ae22c.jpg";
-        ImageSize imageSize = new ImageSize(100,500);
+        ImageSize imageSize = new ImageSize(100, 500);
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.mipmap.ic_launcher) // resource or drawable
                 .showImageForEmptyUri(R.mipmap.ic_launcher) // resource or drawable
@@ -95,25 +96,25 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         ImageLoader.getInstance().displayImage(imageUrl, (ImageView) findViewById(R.id.iv_img), options, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {
-                                Log.e("linwl","onLoadingStarted");
+                Log.e("linwl", "onLoadingStarted");
 
             }
 
             @Override
             public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                Log.e("linwl","onLoadingFailed");
+                Log.e("linwl", "onLoadingFailed");
 
             }
 
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                Log.e("linwl","onLoadingComplete");
+                Log.e("linwl", "onLoadingComplete");
 
             }
 
             @Override
             public void onLoadingCancelled(String imageUri, View view) {
-                Log.e("linwl","onLoadingCancelled");
+                Log.e("linwl", "onLoadingCancelled");
 
             }
         }, new ImageLoadingProgressListener() {
@@ -128,15 +129,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void loadData() {
-        loginPresenter = new OkHttpTestPresenter(this,this);
+        loginPresenter = new OkHttpTestPresenter(this, this);
     }
 
     @Override
     public void onClick(View v) {
-        Log.e("linwl","click2");
+        Log.e("linwl", "click2");
 
-        if (v.getId() == R.id.bt_setimg){
-            Log.e("linwl","click");
+        if (v.getId() == R.id.bt_setimg) {
+            Log.e("linwl", "click");
             loginPresenter.onShowImg();
 //            findViewById(R.id.iv_img).setBackground(getResources().getDrawable(R.mipmap.mac));
         }
@@ -151,10 +152,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void setImg(Drawable drawable) {
 
-     if (drawable == null){
-         Log.e("linwl","drawabledrawable");
+        if (drawable == null) {
+            Log.e("linwl", "drawabledrawable");
 
-     }
+        }
         findViewById(R.id.iv_img).setBackground(drawable);
     }
 
@@ -162,5 +163,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     protected void onDestroy() {
         loginPresenter.onrecycle();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }
