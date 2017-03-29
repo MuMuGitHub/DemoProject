@@ -8,9 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.lin.framework.activity.BaseActivity;
+import com.lin.common.activity.BaseActivity;
 import com.lin.login.R;
 import com.lin.login.presenter.ILoginPresenter;
 import com.lin.login.presenter.OkHttpTestPresenter;
@@ -24,9 +23,6 @@ import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 
-import java.util.ArrayList;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, ILoginView {

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.lin.framework.activity.BaseActivity;
+import com.lin.common.activity.BaseActivity;
 import com.lin.percentcenter.R;
 import com.lin.percentcenter.presenter.UserPresenter;
 import com.lin.percentcenter.view.IUserView;

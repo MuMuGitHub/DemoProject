@@ -1,4 +1,4 @@
-package com.lin.framework.reactnative;
+package com.lin.common.reactnative;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,7 +10,6 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.common.LifecycleState;
 import com.lin.common.baseapp.ActivityStackManager;
-import com.lin.framework.R;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -69,10 +68,10 @@ public class ReactNativeUtil {
 
     public static void notSupportWarning(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        AlertDialog dialog = builder.setTitle(R.string.prompt)
-                .setMessage(R.string.unknown_machine_warning)
+        AlertDialog dialog = builder.setTitle("error")
+                .setMessage("device no support reactnative")
                 .setCancelable(false)
-                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                .setPositiveButton("exit app", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ActivityStackManager.getInstance().appExit();

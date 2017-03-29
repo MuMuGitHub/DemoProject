@@ -1,4 +1,4 @@
-package com.lin.framework.activity;
+package com.lin.common.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,8 +8,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.lin.common.baseapp.ActivityStackManager;
-import com.lin.framework.reactnative.ReactNativeUtil;
-
+import com.lin.common.reactnative.ReactNativeUtil;
 public class BaseReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
     private ReactRootView mReactRootView;
     private ReactInstanceManager mReactInstanceManager;

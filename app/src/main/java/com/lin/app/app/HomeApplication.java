@@ -1,6 +1,6 @@
 package com.lin.app.app;
 
-import com.lin.framework.app.BaseApplication;
+import com.lin.common.baseapp.BaseApplication;
 
 /**
  * Created by linweilin on 2017/2/20.

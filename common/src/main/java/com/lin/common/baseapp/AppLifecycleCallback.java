@@ -1,4 +1,4 @@
-package com.lin.framework.base;
+package com.lin.common.baseapp;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -9,9 +9,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-import com.lin.common.baseapp.AppUtils;
-import com.lin.framework.InitManager;
-import com.lin.framework.app.BaseApplication;
 
 /**
  * Created by linweilin on 2017/2/22.

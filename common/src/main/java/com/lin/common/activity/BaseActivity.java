@@ -1,4 +1,4 @@
-package com.lin.framework.activity;
+package com.lin.common.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;

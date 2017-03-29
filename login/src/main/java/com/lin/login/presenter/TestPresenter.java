@@ -3,7 +3,7 @@ package com.lin.login.presenter;
 import android.content.Context;
 import android.util.Log;
 
-import com.lin.framework.bean.UserInfo;
+import com.lin.common.bean.UserInfo;
 import com.lin.login.bean.LoginInfo;
 import com.lin.login.view.ILoginView;
 

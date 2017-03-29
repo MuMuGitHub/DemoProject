@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.lin.app.R;
-import com.lin.framework.activity.BaseReactActivity;
-import com.lin.framework.reactnative.ReactNativeUtil;
+import com.lin.common.activity.BaseReactActivity;
+import com.lin.common.reactnative.ReactNativeUtil;
 
 public class SplashActivity extends Activity {
 

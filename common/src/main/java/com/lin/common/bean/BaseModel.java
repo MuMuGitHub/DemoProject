@@ -1,4 +1,4 @@
-package com.lin.framework.bean;
+package com.lin.common.bean;
 
 /**
  * Created by linweilin on 2017/3/10.

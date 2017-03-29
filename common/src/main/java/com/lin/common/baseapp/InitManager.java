@@ -1,10 +1,9 @@
-package com.lin.framework;
+package com.lin.common.baseapp;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.lin.common.baseapp.AppUtils;
-import com.lin.framework.reactnative.ReactNativeUtil;
+import com.lin.common.reactnative.ReactNativeUtil;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;

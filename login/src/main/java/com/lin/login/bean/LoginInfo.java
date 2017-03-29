@@ -1,6 +1,6 @@
 package com.lin.login.bean;
 
-import com.lin.framework.bean.UserInfo;
+import com.lin.common.bean.UserInfo;
 
 import java.util.ArrayList;
 import java.util.List;

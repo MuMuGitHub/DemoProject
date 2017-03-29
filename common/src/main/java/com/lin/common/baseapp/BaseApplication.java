@@ -1,10 +1,7 @@
-package com.lin.framework.app;
+package com.lin.common.baseapp;
 
 import android.app.Application;
 import android.content.Context;
-
-import com.lin.framework.InitManager;
-import com.lin.framework.base.AppLifecycleCallback;
 
 import java.util.Map;
 

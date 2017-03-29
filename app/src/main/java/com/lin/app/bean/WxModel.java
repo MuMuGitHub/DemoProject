@@ -1,6 +1,6 @@
 package com.lin.app.bean;
 
-import com.lin.framework.bean.BaseModel;
+import com.lin.common.bean.BaseModel;
 
 import java.util.List;
 

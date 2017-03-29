@@ -1,6 +1,5 @@
 package com.lin.app.activity;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,18 +7,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.lin.app.R;
-import com.lin.app.WXBinding;
 import com.lin.app.adapter.WxAdapter;
-import com.lin.app.bean.IWxItem;
 import com.lin.app.bean.WxItemModel;
 import com.lin.app.bean.WxModel;
 import com.lin.common.net.UrlFactory;
 import com.lin.common.view.DividerItemDecoration;
-import com.lin.framework.activity.BaseActivity;
+import com.lin.common.activity.BaseActivity;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,8 +26,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by linweilin on 2017/3/10.
@@ -110,6 +103,10 @@ public class WxWinnowActivity extends BaseActivity {
             }
         });
 
+
+
+    }
+}
 //        Retrofit retrofit = new Retrofit.Builder()
 //
 //                .baseUrl(UrlFactory.getWxUrl())
@@ -128,6 +125,3 @@ public class WxWinnowActivity extends BaseActivity {
 //
 //            }
 //        });
-
-    }
-}

@@ -1,4 +1,4 @@
-package com.lin.framework.base;
+package com.lin.common.baseapp;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
